@@ -3,26 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
     <title>Weather App</title>
 </head>
 
-<header>
-  <nav>
-    
-  </nav>
-</header>
 
-<body>
-  <div class="container">
-    <h1>Weather App</h1>
-    <form id="clima-form">
-      <input type="text" id="ciudad-input" placeholder="Ingrese una ciudad...">
-      <button type="submit">Ver clima</button>
-    </form>
-  </div>
+<body class="flex">
+  <div class="container flex">
+    <div class="temperatura flex">
+      <img src="assets/storm_728136.png" alt="placeholder icon">
+      <div class="temp">
+        25°C</div>
+    </div>
+    <div class="infoClima flex">
+      <p id="tipoClima">Soleado</p>
+      <p>Humedad : 60%</p>
+      <p>Velocidad del viento : 10 km/h</p>
+      <p>Ciudad : Rosario</p>
 
-  <div id="clima-resultado">
-    <!-- MOSTRAR CLIMA DE LA CIUDAD-->
+    </div>
   </div>
-  <!-- VER DETALLE => OTRA PÁGINA-->
 </body>
