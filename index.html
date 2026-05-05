@@ -3,9 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <link rel="stylesheet" href="css/index.css">
+    <title>Weather App</title>
 </head>
 
+
+<body class="flex">
+  <form class="search-box" onsubmit="submitLocation(event)">
+    <input type="search" placeholder="Ciudad..." id="search-input"
+    required>
+    <button id="search-button" type="submit">Buscar</button>
+  </form>
+
+  <div class="container flex">
+    <div class="temperatura flex">
+      <img alt="weather-icon" id="icon">
+      <div class="temp">
+        25°C</div>
+      </div>
+    <div class="infoClima flex">
+      <p id="weather-type">Soleado</p>
+      <p id="location">Ciudad : Rosario</p>
+      <p id="humidity">Humedad : 60%</p>
+      <p id="wind-speed">Velocidad del viento : 10 km/h</p>
+    </div>
+  </div>
+
+<section class="ejContainer">
+  <div class="ejemplos-box">
+    <img src="assets/storm_728136.png" alt="storm">
+  </div>
+  <div class="ejemplos-box"></div>
+  <div class="ejemplos-box"></div>
+  <div class="ejemplos-box"></div>
+</section>
+<script src="js/index.js"></script>
+</body>
 <header>
   <nav>
     etc
