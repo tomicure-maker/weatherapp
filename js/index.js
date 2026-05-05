@@ -1,25 +1,69 @@
+
+
+let tempContainer = document.querySelector(".temp");
+let icon = document.querySelector("#icon");
+let weatherType = document.querySelector("#weather-type");
+let humidity = document.querySelector("#humidity");
+let windSpeed = document.querySelector("#wind-speed");
+let locationContainer = document.querySelector("#location");
+
+
+
+
+
 const apiKey = "ee2bbf259064f981ca49b2daa8440fc9";
-//ESPERAR UNAS HORAS A QUE FUNCIONE 
-let loc = "rosario";
-const api = `https://api.openweathermap.org/data/2.5/weather?q=${loc}&appid=${apiKey}&units=metric`;
+let loc = "rosario"; //VALOR INICIAL (PREGUNTAR AL USUARIO)
 
-function apiFetch(){
-    fetch(api)
-    .then((res) => res.json())
-    .then((data) =>{
-        console.log(data);
-    
-        let temp = data.main.temp;
-        let icon = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-        let weatherType = data.weather[0].description;
-        let humidity = data.main.humidity;
-        let windspeed = data.wind.speed;
-        let cityName = data.name;
-        let countryName = data.sys.country;
+async function submitLocation(event) {
+    event.preventDefault();
+    const searchInput = document.querySelector("#search-input");
+    loc = searchInput.value.trim();
+    if (!loc) return;
+    await apiFetch();
+}
 
-        console.log(cityName, countryName, temp, icon, weatherType, humidity, windspeed);
+async function apiFetch() {
+    try {
+        const geoUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=5&appid=${apiKey}`;
+        const geoRes = await fetch(geoUrl);
+        const geoData = await geoRes.json();
 
-    });
+        if (geoData.length === 0) {
+            alert("Ciudad no encontrada");
+            return;
+        }
+
+        console.log("Resultados de geocodificación:", geoData);
+        console.log("Nombres posibles:", geoData.map(item => `${item.name}${item.state ? ", " + item.state : ""}, ${item.country}`));
+
+        const locationInfo = geoData[0];
+        const latitude = locationInfo.lat;
+        const longitude = locationInfo.lon;
+
+        const cityName = locationInfo.local_names?.es || locationInfo.name || loc;
+        const countryCode = locationInfo.country || "";
+
+        const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&lang=es&units=metric`;
+        const weatherRes = await fetch(weatherUrl);
+        const data = await weatherRes.json();
+
+        if (!weatherRes.ok) {
+            console.error(data);
+            alert("No se pudo obtener el clima");
+            return;
+        }
+
+        tempContainer.innerHTML = `${data.main.temp}°C`;
+        icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+        weatherType.innerHTML = data.weather[0].description;
+        humidity.innerHTML = `Humedad: ${data.main.humidity}%`;
+        windSpeed.innerHTML = `Velocidad del viento: ${data.wind.speed} km/h`;
+        locationContainer.innerHTML = `${cityName}, ${countryCode}`;
+    } 
+    catch (err) {
+        console.error(err);
+        alert("Error al conectar con el servicio");
     }
+}
 
 apiFetch();

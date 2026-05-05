@@ -4,29 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
-    <script src="js/index.js"></script>
     <title>Weather App</title>
 </head>
 
 
 <body class="flex">
-  <form class="search-box">
+  <form class="search-box" onsubmit="submitLocation(event)">
     <input type="search" placeholder="Ciudad..." id="search-input"
-    required onsubmit="submitLocation(event)">
+    required>
     <button id="search-button" type="submit">Buscar</button>
   </form>
 
   <div class="container flex">
     <div class="temperatura flex">
-      <img src="assets/storm_728136.png" alt="placeholder icon">
+      <img alt="weather-icon" id="icon">
       <div class="temp">
         25°C</div>
-    </div>
+      </div>
     <div class="infoClima flex">
-      <p id="tipoClima">Soleado</p>
-      <p>Ciudad : Rosario</p>
-      <p>Humedad : 60%</p>
-      <p>Velocidad del viento : 10 km/h</p>
+      <p id="weather-type">Soleado</p>
+      <p id="location">Ciudad : Rosario</p>
+      <p id="humidity">Humedad : 60%</p>
+      <p id="wind-speed">Velocidad del viento : 10 km/h</p>
     </div>
   </div>
 
@@ -38,4 +37,5 @@
   <div class="ejemplos-box"></div>
   <div class="ejemplos-box"></div>
 </section>
+<script src="js/index.js"></script>
 </body>
