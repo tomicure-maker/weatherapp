@@ -1,0 +1,130 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.titulo{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 30px;
+}
+.titulo h1{
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+.titulo p{
+    font-size: 24px;
+    color: rgb(120, 120, 120);
+}
+.texto{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20%;
+    margin-bottom: 50px;
+}
+.texto p{
+    margin-top: 0px;
+    text-align: justify;
+    line-height: 1.8;       
+    flex: 1;                
+    max-width: 550px;       
+    font-size: 1.05rem;
+}
+
+.formulario-contacto fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* El título del fieldset */
+legend {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #333;
+  grid-column: 1 / -1; /* Ocupa todo el ancho */
+}
+
+/* Contenedor de la tarjeta (si no lo tienes en un div padre, puedes aplicarlo aquí) */
+.formulario-contacto {
+  padding: 40px;
+  padding-top: 0;
+  border-radius: 15px;
+  max-width: 500px;
+  margin: 20px auto;
+  margin-top: 0;
+}
+
+/* Grupos de campos (Label + Input) */
+.grupo-campo {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Campos que ocupan todo el ancho (Email, Textarea y Botón) */
+.grupo-campo:nth-child(4), /* Esto selecciona el Email en tu estructura */
+.campo-completo {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+input, textarea {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: #fcfcfc;
+}
+
+/* Efecto al hacer clic en los campos */
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #0056b3;
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+}
+
+/* Estilo del botón "Enviar" */
+button.campo-completo {
+  background-color: #0056b3; /* Azul ClimaNow */
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+button.campo-completo:hover {
+  background-color: #004494;
+  transform: translateY(-1px); /* Efecto sutil de levante */
+}
+
+/* Responsivo para móviles */
+@media (max-width: 480px) {
+  .formulario-contacto fieldset {
+    grid-template-columns: 1fr; /* Todo en una sola columna */
+  }
+  .formulario-contacto {
+    padding: 20px;
+  }
+}
+

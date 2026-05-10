@@ -1,0 +1,135 @@
+<!-- 4. about.html o info.html → Información del proyecto
+
+Muchos subestiman esta página, pero sirve muchísimo para completar el TP.
+
+Podés poner:
+cómo funciona la app
+qué API usaste
+tecnologías:
+HTML
+CSS
+JavaScript
+OpenWeather
+autor
+contacto
+capturas
+explicación del responsive
+Además:
+
+Es ideal para mostrar:
+
+favicon
+imágenes optimizadas
+diseño semántico -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/info.css" />
+    <link rel="shortcut icon" href="./assets/icon.png" type="" />
+    <title>Informacion</title>
+  </head>
+  <body>
+    <header>
+      <ul class="nav-ul">
+        <li class="nav-li">
+          <a class="nav-link" href="./index.html">Inicio</a>
+        </li>
+        <li class="nav-li">
+          <a class="nav-link" href="./pronostico.html">Pronostico Extendido</a>
+        </li>
+        <li class="nav-li">
+          <a class="nav-link" href="./mapa.html">Mapas</a>
+        </li>
+        <li class="nav-li">
+          <a class="nav-link" href="./info.html">Sobre Nosotros</a>
+        </li>
+      </ul>
+    </header>
+    <main>
+      <!-- Formulario de contacto + informacion sobre nosotros. -->
+      <section class="container">
+        <div class="titulo">
+          <h1>Sobre nosotros</h1>
+          <p>Conoce el equipo detras de ClimaNow</p>
+        </div>
+        <div class="texto">
+          <p>
+            En ClimaNow, nuestra misión es brindar información meteorológica
+            precisa, rápida y accesible para ayudarte a planificar tu día con
+            confianza. Entendemos lo importante que es contar con datos exactos,
+            ya sea para organizar tu rutina de entrenamiento, planificar un
+            viaje en motocicleta o gestionar la logística diaria de tu negocio.
+            Nuestra plataforma utiliza tecnología de punta conectada a la
+            OpenWeather API, lo que nos permite ofrecer actualizaciones cada 10
+            minutos y mantenerte siempre informado frente a cualquier cambio
+            repentino en el clima. Trabajamos constantemente en mejorar nuestra
+            interfaz visual para que revisar el clima sea una experiencia clara
+            y agradable.
+          </p>
+          <form class="formulario-contacto" action="">
+            <fieldset>
+              <legend>Contactanos!</legend>
+
+              <div class="grupo-campo">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" />
+              </div>
+
+              <div class="grupo-campo">
+                <label for="apellido">Apellido:</label>
+                <input type="text" id="apellido" name="apellido" />
+              </div>
+
+              <div class="grupo-campo">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" />
+              </div>
+
+              <div class="grupo-campo campo-completo">
+                <label for="comentario">Deja tu comentario:</label>
+                <textarea name="comentario" id="comentario" rows="5"></textarea>
+              </div>
+
+              <button type="submit" class="campo-completo">Enviar</button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3>ClimaNow</h3>
+          <p>Pronóstico del tiempo en tiempo real.</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Enlaces</h4>
+          <a href="index.html">Inicio</a>
+          <a href="pronostico.html">Pronóstico</a>
+          <a href="mapa.html">Mapa</a>
+          <a href="info.html">Información</a>
+        </div>
+
+        <div class="footer-api">
+          <h4>Datos meteorológicos</h4>
+          <p>Powered by OpenWeather API</p>
+          <p>Actualización automática cada 10 minutos</p>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contacto</h4>
+          <p>climanow@email.com</p>
+          <p>Instagram: @climanow</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 ClimaNow - Todos los derechos reservados</p>
+      </div>
+    </footer>
+  </body>
+</html>
