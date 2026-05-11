@@ -1,11 +1,11 @@
 const table = document.getElementById('table');
 const tableBody = document.getElementById('tableBody');
-
+const subTitle = document.getElementById('subTitulo');
 
 const apiKey = "ee2bbf259064f981ca49b2daa8440fc9";
-const ciudad = "Rosario";
+const ciudad = JSON.parse(localStorage.getItem('loc'));
 
-const url = `https://api.openweathermap.org/data/2.5/forecast?q=${ciudad}&appid=${apiKey}&units=metric&lang=es`;
+const url = `https://api.openweathermap.org/data/2.5/forecast?q=${ciudad.cityName}&appid=${apiKey}&units=metric&lang=es`;
 
 export async function fetchForecast(){
 
@@ -21,12 +21,18 @@ export async function fetchForecast(){
             return;
         }
         const pronosticosPorDia = {};
-
+        subTitle.textContent = `Próximos 5 días en ${ciudad.cityName}`;
         // AGRUPAR DATOS
         data.list.forEach(item => {
             
             const fecha = item.dt_txt.split(" ")[0];
-
+            const hoy = new Date();
+            hoy.setHours(0,0,0,0);
+            const fechaPronostico =
+            new Date(fecha);
+            if(fechaPronostico < hoy){
+                return;
+            }
             if(!pronosticosPorDia[fecha]){
 
                 pronosticosPorDia[fecha] = {
@@ -62,6 +68,13 @@ export async function fetchForecast(){
         // CREAR TABLA
         for(const fecha in pronosticosPorDia){
 
+            const date = new Date(fecha);
+            const dia = date.toLocaleDateString(
+                'es-AR',
+                { weekday: 'long' }
+            );
+            const diaSemana = dia.charAt(0).toUpperCase() + dia.slice(1);
+
             const pronostico =
                 pronosticosPorDia[fecha];
 
@@ -83,7 +96,7 @@ export async function fetchForecast(){
             const celdaPop =
                 document.createElement('td');
 
-            celdaFecha.textContent = fecha;
+            celdaFecha.textContent = diaSemana;
             celdaCondicion.textContent =
                 pronostico.clima;
             celdaTempMin.textContent =

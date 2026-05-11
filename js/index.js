@@ -6,6 +6,7 @@ let weatherType = document.querySelector("#weather-type");
 let humidity = document.querySelector("#humidity");
 let windSpeed = document.querySelector("#wind-speed");
 
+const container = document.querySelector('.container flex')
 const feelsLike = document.getElementById("feels-like");
 
 let locationContainer = document.querySelector("#location");
@@ -20,6 +21,12 @@ const apiKey =
 "ee2bbf259064f981ca49b2daa8440fc9";
 
 let loc = "rosario";
+
+
+const savedLoc = JSON.parse(localStorage.getItem("loc"));
+if(savedLoc){
+    renderIndex(savedLoc)
+}
 
 searchInput.addEventListener('input', () =>{
     if(searchInput.value === ""){
@@ -65,7 +72,7 @@ export async function apiFetch() {
         geoData.forEach(locationInfo => {
             const item = document.createElement("div");
             item.classList.add("result-item");
-            item.textContent =`${locationInfo.name}${locationInfo.state? ", " + locationInfo.state: ""} (${locationInfo.country})`; 
+            item.textContent =`${locationInfo.name}${locationInfo.state? ", " + locationInfo.state: ""} (${locationInfo.country})`;
             item.addEventListener("click", async () => {
                 searchResults.innerHTML = "";
                 const latitude = locationInfo.lat;
@@ -81,14 +88,20 @@ export async function apiFetch() {
                     return;
                 }
                 const windKm =(data.wind.speed * 3.6).toFixed(1);
-                if ( window.location.pathname.includes("index.html") || window.location.pathname === "/") {
-                    renderIndex(
-                        data,
-                        cityName,
-                        countryCode,
-                        windKm
-                    );
-                }
+                //Creo el objeto LOC con los valores para poder renderizar
+                const loc = {
+                    cityName,
+                    countryCode,
+                    temp: Math.round(data.main.temp),
+                    icon: data.weather[0].icon,
+                    description: data.weather[0].description,
+                    humidity: data.main.humidity,
+                    feelsLike:Math.round(data.main.feels_like),
+                    windSpeed: windKm
+                    };
+                localStorage.setItem("loc", JSON.stringify(loc));
+                    renderIndex(loc);
+                
                 searchInput.value = `${cityName}, ${countryCode}`;
             });
             searchResults.appendChild(item);
@@ -103,26 +116,18 @@ export async function apiFetch() {
 }
 
 function renderIndex(
-    data,
-    cityName,
-    countryCode,
-    windKm
+    loc
 ) 
-
 {
-    tempContainer.innerHTML = `${Math.round(data.main.temp)}°C`;
-    icon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
-    weatherType.innerHTML =
-    data.weather[0].description;
-    humidity.innerHTML =
-    `💧 Humedad: ${data.main.humidity}%`;
-    feelsLike.innerHTML =
-    `🌡️ Sensación térmica:
-    ${Math.round(data.main.feels_like)}°C`;
-    windSpeed.innerHTML =
-    `🌬️ Viento: ${windKm} km/h`;
-    locationContainer.innerHTML =
-    `${cityName}, ${countryCode}`;
+    if ( window.location.pathname.includes("index.html") || window.location.pathname === "/") {
+        tempContainer.innerHTML = `${Math.round(loc.temp)}°C`;
+        icon.src = `https://openweathermap.org/img/wn/${loc.icon}@2x.png`;
+        weatherType.innerHTML = loc.description;
+        humidity.innerHTML = `💧 Humedad: ${loc.humidity}%`;
+        feelsLike.innerHTML = `🌡️ Sensación térmica:${loc.feelsLike}°C`;
+        windSpeed.innerHTML = `🌬️ Viento: ${loc.windSpeed} km/h`;
+        locationContainer.innerHTML =`${loc.cityName}, ${loc.countryCode}`;
+        } 
 }
 
 

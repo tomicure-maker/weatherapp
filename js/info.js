@@ -1,5 +1,5 @@
 const form = document.getElementById('form');
-const name = document.getElementById('nombre');
+const nombre = document.getElementById('nombre');
 const lastname = document.getElementById('apellido');
 const email = document.getElementById('email');
 const text = document.getElementById('comentario')
@@ -15,12 +15,12 @@ form.addEventListener('submit', (e) => {
         validarApellido();
         validarEmail()
 })
-name.addEventListener('blur', validarNombre);
+nombre.addEventListener('input', validarNombre);
 lastname.addEventListener('input', validarApellido);
 email.addEventListener('input', validarEmail);
 
 function validarNombre (){
-    if(name.value.length < 3 || name.value.length >= 20){
+    if(nombre.value.length < 3 || nombre.value.length >= 20){
         console.log('El nombre debe tener entre 3 y 20 caracteres')
         if(!labelName.querySelector('#nameError')){
             const nameError = document.createElement('p');
@@ -29,12 +29,12 @@ function validarNombre (){
             nameError.textContent = 'El nombre debe tener entre 3 a 20 caracteres';
             labelName.appendChild(nameError);
         }     
-        name.classList.add('error');
+        nombre.classList.add('error');
     } else{
         if(labelName.querySelector('#nameError')){
             labelName.querySelector('#nameError').remove()
         }
-        name.classList.remove('error');  
+        nombre.classList.remove('error');  
     }
 }
 function validarApellido(){
