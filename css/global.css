@@ -45,7 +45,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-     position: relative;
+    position: relative;
     z-index: 1000;
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.45);
 
@@ -81,7 +81,7 @@ header::after {
     transition: color 0.3s ease;
 }
 .nav-link:hover {
-    color: #38bdf8;;
+    color: #38bdf8;
 }
 
 /* HEADER */
@@ -106,3 +106,8 @@ main {
 }
 
 /* BODY */
+
+.darkMode{
+    background-color: #0f172a83;
+    color: rgba(163, 163, 5, 0.786) !important;
+}
