@@ -115,6 +115,12 @@ export async function apiFetch() {
                 localStorage.setItem("loc", JSON.stringify(currentLoc));
                 //Llamamos a la funcion para renderizar y le pasamos el objeto currentLoc
                 renderIndex(currentLoc);
+
+                // Actualizar mapa dinamico
+                const windyFrame = document.getElementById("windyMap");
+                windyFrame.src = `https://embed.windy.com/embed2.html?lat=${latitude}&lon=${longitude}&detailLat=${latitude}&detailLon=${longitude}&zoom=7&level=surface&overlay=wind`;
+
+
                 //Limpiamos el input de busqueda
                 searchInput.value = `${cityName}, ${countryCode}`;
             });

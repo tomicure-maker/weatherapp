@@ -111,3 +111,12 @@ main {
     background-color: #0f172a83;
     color: rgba(163, 163, 5, 0.786) !important;
 }
+.mapa-container {
+    margin-top: 20px;
+}
+
+#windyMap {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+}
