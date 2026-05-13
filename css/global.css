@@ -120,3 +120,47 @@ main {
     border: none;
     border-radius: 10px;
 }
+
+/* MEDIA QUERIES */
+
+/* CELULARES*/
+@media (max-width: 767px) {
+    header {
+        height: 60px;
+    }
+
+    .nav-ul {
+        justify-content: flex-start;
+        width: 100%;
+        padding: 0 20px;
+        gap: 15px;
+    }
+
+    .nav-link {
+        font-size: 11px;
+    }
+
+    .footer {
+        padding: 20px 10px;
+    }
+
+    .footer-container {
+        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer h3,
+    .footer h4 {
+        font-size: 14px;
+    }
+
+    .footer a {
+        font-size: 12px;
+    }
+
+    .mapa-container {
+        margin-top: 40px;
+    }
+}
+
+
