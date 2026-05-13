@@ -207,3 +207,115 @@ label .textError{
         font-size: 15px;
     }
 }
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .titulo {
+        margin: 50px 30px;
+    }
+
+    .titulo h1 {
+        font-size: 40px;
+        margin-bottom: 12px;
+    }
+
+    .titulo p {
+        font-size: 20px;
+    }
+
+    .texto {
+        gap: 25px;
+        margin-bottom: 40px;
+        padding: 0 30px;
+    }
+
+    .texto p {
+        font-size: 17px;
+        margin: 12px 0;
+    }
+
+    .formulario-contacto {
+        padding: 30px;
+        max-width: 600px;
+        margin: 15px auto;
+    }
+
+    .formulario-contacto fieldset {
+        gap: 18px;
+    }
+
+    legend {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 15px;
+    }
+
+    input, textarea {
+        padding: 11px;
+        font-size: 16px;
+    }
+
+    button.campo-completo {
+        padding: 14px;
+        font-size: 16px;
+    }
+}
+
+/* DESKTOP GRANDE */
+@media (min-width: 1280px) {
+    .titulo {
+        margin: 60px 40px;
+    }
+
+    .titulo h1 {
+        font-size: 48px;
+        margin-bottom: 15px;
+    }
+
+    .titulo p {
+        font-size: 24px;
+    }
+
+    .texto {
+        gap: 30px;
+        margin-bottom: 50px;
+        padding: 0 40px;
+    }
+
+    .texto p {
+        font-size: 17px;
+        margin: 15px 0;
+    }
+
+    .formulario-contacto {
+        padding: 40px;
+        max-width: 700px;
+        margin: 20px auto;
+    }
+
+    .formulario-contacto fieldset {
+        gap: 20px;
+    }
+
+    legend {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input, textarea {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    button.campo-completo {
+        padding: 15px;
+        font-size: 16px;
+    }
+}

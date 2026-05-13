@@ -115,3 +115,53 @@ button:hover{
         font-size: 14px;
     }
 }
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #listaFavoritos {
+        width: 80%;
+        margin: 25px auto;
+        gap: 12px;
+    }
+
+    .ciudad {
+        padding: 14px;
+        gap: 12px;
+    }
+
+    textarea {
+        min-height: 55px;
+        padding: 9px;
+        font-size: 15px;
+    }
+
+    button {
+        padding: 9px 13px;
+        font-size: 15px;
+    }
+}
+
+/* DESKTOP GRANDE */
+@media (min-width: 1280px) {
+    #listaFavoritos {
+        width: 70%;
+        margin: 35px auto;
+        gap: 18px;
+    }
+
+    .ciudad {
+        padding: 18px;
+        gap: 18px;
+    }
+
+    textarea {
+        min-height: 65px;
+        padding: 11px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 11px 15px;
+        font-size: 16px;
+    }
+}
