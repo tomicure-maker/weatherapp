@@ -56,7 +56,7 @@
 .container{
     height: 400px;
     width:100%;
-    margin: 130px;
+    margin: 20px auto;
     border-radius: 12px;
     background:white;
 }
@@ -142,8 +142,6 @@
     padding: 0;
 }
 
-
-
 #search-results{
     position: absolute;
     top: 100%;
@@ -197,3 +195,177 @@
 #btnFav:active{
     transform: scale(0.95);
 }
+
+/* MEDIA QUERIES */
+
+/*CELULAR */
+@media (max-width: 767px) {
+    .search-box {
+        width: 90%;
+        height: 45px;
+    }
+
+    .search-box input {
+        width: calc(100% - 45px);
+        font-size: 14px;
+    }
+
+    .search-box button {
+        width: 45px;
+    }
+
+    .search-container {
+        width: 90%;
+    }
+
+    .search-container.active {
+        margin-bottom: 400px;
+    }
+
+    #search-results {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    #btnFav {
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
+    }
+
+    .extra-info {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    #location {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 20px;
+    }
+
+    .temp {
+        font-size: 80px;
+    }
+
+    #weather-type {
+        font-size: 28px;
+    }
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .search-box {
+        width: 70%;
+        height: 48px;
+    }
+
+    .search-box input {
+        width: calc(100% - 48px);
+        font-size: 15px;
+    }
+
+    .search-box button {
+        width: 48px;
+    }
+
+    .search-container {
+        width: 70%;
+    }
+
+    .container {
+        margin: 30px auto;
+        height: 450px;
+    }
+
+    .extra-info {
+        flex-direction: row;
+        gap: 20px;
+        font-size: 18px;
+        padding: 12px 20px;
+    }
+
+    #location {
+        font-size: 40px;
+    }
+
+    .subtitle {
+        font-size: 24px;
+    }
+
+    .temp {
+        font-size: 100px;
+    }
+
+    #weather-type {
+        font-size: 32px;
+    }
+
+    #btnFav {
+        width: 50px;
+        height: 50px;
+        font-size: 26px;
+    }
+}
+
+/* DESKTOP GRANDE */
+@media (min-width: 1280px) {
+    .search-box {
+        width: 50%;
+        height: 52px;
+    }
+
+    .search-box input {
+        width: calc(100% - 52px);
+        font-size: 17px;
+    }
+
+    .search-box button {
+        width: 52px;
+    }
+
+    .search-container {
+        width: 50%;
+    }
+
+    .container {
+        margin: 40px auto;
+        height: 500px;
+    }
+
+    .extra-info {
+        gap: 25px;
+        font-size: 20px;
+        padding: 15px 25px;
+    }
+
+    #location {
+        font-size: 48px;
+    }
+
+    .subtitle {
+        font-size: 28px;
+    }
+
+    .temp {
+        font-size: 120px;
+    }
+
+    #weather-type {
+        font-size: 42px;
+    }
+
+    #btnFav {
+        width: 55px;
+        height: 55px;
+        font-size: 28px;
+    }
+}
+
+

@@ -47,3 +47,108 @@ td,
 th{
     text-align:center;
 }
+
+/* MEDIA QUERIES */
+
+@media (max-width: 767px) {
+    main {
+        margin-bottom: 10px;
+    }
+
+    .forecast {
+        width: 95%;
+        max-width: 800px;
+        margin: 10px auto;
+    }
+
+    .forecast h1 {
+        font-size: 32px;
+        margin: 15px 0 10px 0;
+    }
+
+    .forecast p {
+        font-size: 18px;
+    }
+
+    table {
+        margin-top: 10px;
+        font-size: 12px;
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+    }
+
+    th {
+        padding: 8px 4px;
+        font-size: 14px;
+    }
+
+    td {
+        padding: 10px 4px;
+        font-size: 14px;
+    }
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .forecast {
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    .forecast h1 {
+        font-size: 40px;
+        margin: 20px 0 15px 0;
+    }
+
+    .forecast p {
+        font-size: 22px;
+    }
+
+    table {
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    th {
+        padding: 15px 10px;
+        font-size: 18px;
+    }
+
+    td {
+        padding: 18px 10px;
+        font-size: 18px;
+    }
+}
+
+/* DESKTOP GRANDE */
+@media (min-width: 1280px) {
+    .forecast {
+        width: 80%;
+        margin-top: 50px;
+    }
+
+    .forecast h1 {
+        font-size: 48px;
+        margin: 25px 0 15px 0;
+    }
+
+    .forecast p {
+        font-size: 24px;
+    }
+
+    table {
+        margin-top: 50px;
+        font-size: 22px;
+    }
+
+    th {
+        padding: 20px;
+        font-size: 22px;
+    }
+
+    td {
+        padding: 25px 20px;
+        font-size: 22px;
+    }
+}

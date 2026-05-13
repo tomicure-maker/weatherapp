@@ -30,9 +30,11 @@ if(savedLoc){
 }
 
 //Agregamos un evento al input para que cuando borremos todo oculte el resultado de busquedas
+const searchContainer = document.querySelector('.search-container');
 searchInput.addEventListener('input', () =>{
     if(searchInput.value === ""){
         searchResults.style.display = 'none';
+        searchContainer.classList.remove('active');
     }
 })
 
@@ -43,9 +45,11 @@ async function submitLocation(event) {
     loc = searchInput.value.trim();
     if (!loc){
         searchResults.style.display = 'none';
+        searchContainer.classList.remove('active');
         return;
     }
     searchResults.style.display = 'block';
+    searchContainer.classList.add('active');
     await apiFetch();
 }
 
@@ -81,7 +85,9 @@ export async function apiFetch() {
             //Realizamos evento para el item (ciudad que selecciona el usuario)
             item.addEventListener("click", async () => {
                 //creamos las variables y guardamos toda la informacion
-                searchResults.innerHTML = ""; 
+                searchResults.innerHTML = "";
+                searchResults.style.display = 'none';
+                searchContainer.classList.remove('active'); 
                 const latitude = locationInfo.lat;
                 const longitude = locationInfo.lon;
                 const cityName = locationInfo.local_names?.es || locationInfo.name || loc;
@@ -142,9 +148,9 @@ function renderIndex(loc){ //Funcion para renderizar los datos traidos de la API
         tempContainer.innerHTML = `${Math.round(loc.temp)}°C`;
         icon.src = `https://openweathermap.org/img/wn/${loc.icon}@2x.png`;
         weatherType.innerHTML = loc.description;
-        humidity.innerHTML = `💧 Humedad: ${loc.humidity}%`;
-        feelsLike.innerHTML = `🌡️ Sensación térmica:${loc.feelsLike}°C`;
-        windSpeed.innerHTML = `🌬️ Viento: ${loc.windSpeed} km/h`;
+        humidity.innerHTML = `<span class="emoji">💧</span><span class="info"> Humedad: ${loc.humidity}%</span>`;
+        feelsLike.innerHTML = `<span class="emoji">🌡️</span><span class="info"> Sensación térmica:${loc.feelsLike}°C</span>`;
+        windSpeed.innerHTML = `<span class="emoji">🌬️</span><span class="info"> Viento: ${loc.windSpeed} km/h</span>`;
         locationContainer.innerHTML =`${loc.cityName}, ${loc.countryCode}`;
         }}
 
