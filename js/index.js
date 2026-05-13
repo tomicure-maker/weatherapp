@@ -176,6 +176,23 @@ btnFav.addEventListener('click', () =>{
     
     listaFavoritos.push(currentLoc); //Agregamos la ciudad al array
     localStorage.setItem('listaFavoritos', JSON.stringify(listaFavoritos)); //guardamos el array actualizado en el localStorage
+
+    
 })
 
+// Banner de cookies
+window.addEventListener("load", () => {
+  const banner = document.getElementById("cookieBanner");
+  const btn = document.getElementById("acceptCookies");
 
+  if (!localStorage.getItem("cookiesAccepted")) {
+    banner.style.display = "block";
+  } else {
+    banner.style.display = "none";
+  }
+
+  btn.addEventListener("click", () => {
+    localStorage.setItem("cookiesAccepted", "true");
+    banner.style.display = "none";
+      });
+});
