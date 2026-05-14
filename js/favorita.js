@@ -2,6 +2,16 @@ const listaFavoritos = document.getElementById('listaFavoritos');
 
 const ciudadesFavoritas = JSON.parse(localStorage.getItem('listaFavoritos'));
 
+//  Mostrar mensaje si existe el flag
+const removeMessage = document.getElementById("removeMessage");
+if (localStorage.getItem("ciudadEliminada") === "true") {
+    removeMessage.style.display = "block";
+    setTimeout(() => {
+        removeMessage.style.display = "none";
+    }, 2000);
+    localStorage.removeItem("ciudadEliminada"); // borramos el flag
+}
+
 console.log(ciudadesFavoritas);
 
 if(ciudadesFavoritas){
@@ -33,6 +43,10 @@ if(ciudadesFavoritas){
             //El .filter((_, i) => i !== index) Filtra el elemento segun con quien esta asociado el boton.  (Closure)
             const nuevasCiudades = ciudadesFavoritas.filter((_, i) => i !== index);
             localStorage.setItem('listaFavoritos', JSON.stringify(nuevasCiudades));
+
+        // Guardamos el flag antes de recargar
+            localStorage.setItem("ciudadEliminada", "true");
+
             location.reload();
         });
 
