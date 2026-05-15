@@ -184,6 +184,11 @@ btnFav.addEventListener('click', () =>{
     listaFavoritos.push(currentLoc); //Agregamos la ciudad al array
     localStorage.setItem('listaFavoritos', JSON.stringify(listaFavoritos)); //guardamos el array actualizado en el localStorage
 
+    // Notificacion de ciudad favorita
+    favMessage.style.display = "block";
+    setTimeout(() => {
+        favMessage.style.display = "none";
+    }, 2000); // se oculta después de 2 segundos
     
 })
 
