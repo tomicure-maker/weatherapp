@@ -63,4 +63,11 @@ if(ciudadesFavoritas){
 
 
 
+} else{
+    const message = document.createElement('p');
+    message.textContent = 'No se han guardado ciudades Favoritas!'
+    const container = document.createElement('div');
+    container.appendChild(message);
+    const section = document.getElementById('sectionFav');
+    section.appendChild(container);
 }

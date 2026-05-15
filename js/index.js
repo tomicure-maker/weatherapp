@@ -115,7 +115,8 @@ export async function apiFetch() {
                     humidity: data.main.humidity,
                     feelsLike:Math.round(data.main.feels_like),
                     windSpeed: windKm,
-                    note: ''
+                    note: '',
+                    map: `https://embed.windy.com/embed2.html?lat=${latitude}&lon=${longitude}&detailLat=${latitude}&detailLon=${longitude}&zoom=7&level=surface&overlay=wind`
                     };
                 //guardamos el currentLoc en el localStorage para crear PERSISTENCIA 
                 localStorage.setItem("loc", JSON.stringify(currentLoc));
@@ -123,8 +124,8 @@ export async function apiFetch() {
                 renderIndex(currentLoc);
 
                 // Actualizar mapa dinamico
-                const windyFrame = document.getElementById("windyMap");
-                windyFrame.src = `https://embed.windy.com/embed2.html?lat=${latitude}&lon=${longitude}&detailLat=${latitude}&detailLon=${longitude}&zoom=7&level=surface&overlay=wind`;
+                
+                
 
 
                 //Limpiamos el input de busqueda
@@ -145,6 +146,8 @@ export async function apiFetch() {
 
 function renderIndex(loc){ //Funcion para renderizar los datos traidos de la API
     if ( window.location.pathname.includes("index.html") || window.location.pathname === "/"){ //Validamos que el usuario este en la pagina del index.html antes de cargar.
+        const windyFrame = document.getElementById("windyMap");
+        console.log(loc.map)
         tempContainer.innerHTML = `${Math.round(loc.temp)}°C`;
         icon.src = `https://openweathermap.org/img/wn/${loc.icon}@2x.png`;
         weatherType.innerHTML = loc.description;
@@ -152,6 +155,10 @@ function renderIndex(loc){ //Funcion para renderizar los datos traidos de la API
         feelsLike.innerHTML = `<span class="emoji">🌡️</span><span class="info"> Sensación térmica:${loc.feelsLike}°C</span>`;
         windSpeed.innerHTML = `<span class="emoji">🌬️</span><span class="info"> Viento: ${loc.windSpeed} km/h</span>`;
         locationContainer.innerHTML =`${loc.cityName}, ${loc.countryCode}`;
+        //Corroboramos que el el atributo map tenga valor para mostrarlo
+        if(loc.map){
+            windyFrame.src = loc.map;
+        }
         }}
 
 

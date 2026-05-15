@@ -265,7 +265,7 @@ label .textError{
 }
 
 /* DESKTOP GRANDE */
-@media (min-width: 1280px) {
+/* @media (min-width: 1280px) {
     .titulo {
         margin: 60px 40px;
     }
@@ -318,4 +318,4 @@ label .textError{
         padding: 15px;
         font-size: 16px;
     }
-}
+} */
