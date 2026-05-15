@@ -61,6 +61,16 @@
     background:white;
 }
 
+.container-flex {
+    border: none;
+    border-radius: 50px;
+    box-shadow: 5px 5px 15px 0px rgba(20, 63, 136, 0.6);
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container-img{
     display: flex;
     gap: 20px;

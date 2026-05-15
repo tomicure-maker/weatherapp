@@ -34,7 +34,7 @@
         </div>
         <div class="texto">
           <p>
-            En ClimaNow, nuestra misión es brindar información meteorológica
+            En <strong>ClimaNow</strong>, nuestra misión es brindar información meteorológica
             precisa, rápida y accesible para ayudarte a planificar tu día con
             confianza. Entendemos lo importante que es contar con datos exactos,
             ya sea para organizar tu rutina de entrenamiento, planificar un
@@ -46,33 +46,35 @@
             interfaz visual para que revisar el clima sea una experiencia clara
             y agradable.
           </p>
-          <form id="form" class="formulario-contacto" action="">
-            <fieldset>
-              <legend>Contactanos!</legend>
+          <div class="contenedor-formulario">
+            <form id="form" class="formulario-contacto" action="">
+              <fieldset>
+                <legend>Contactanos!</legend>
+                
+                <div class="grupo-campo">
+                  <label for="nombre">Nombre:</label>
+                  <input type="text" id="nombre" name="nombre" />
+                </div>
+                
+                <div class="grupo-campo">
+                  <label for="apellido">Apellido:</label>
+                  <input type="text" id="apellido" name="apellido" />
+                </div>
+                
+                <div class="grupo-campo">
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" />
+                </div>
 
-              <div class="grupo-campo">
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" />
-              </div>
-
-              <div class="grupo-campo">
-                <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" />
-              </div>
-
-              <div class="grupo-campo">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" />
-              </div>
-
-              <div class="grupo-campo campo-completo">
-                <label for="comentario">Deja tu comentario:</label>
-                <textarea name="comentario" id="comentario" rows="5"></textarea>
-              </div>
-
-              <button type="submit" class="campo-completo">Enviar</button>
-            </fieldset>
-          </form>
+                <div class="grupo-campo campo-completo">
+                  <label for="comentario">Deja tu comentario:</label>
+                  <textarea name="comentario" id="comentario" rows="5"></textarea>
+                </div>
+                
+                <button type="submit" class="campo-completo">Enviar</button>
+              </fieldset>
+            </form>
+          </div>
         </div>
       </section>
     </main>
