@@ -88,17 +88,55 @@ button:hover{
 }
 
 .fav-message-remove {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #ef4444;
-  color: #fff;
-  padding: 12px 18px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  font-size: 14px;
-  display: none;
-  z-index: 10000;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ef4444;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-size: 14px;
+    display: none;
+    z-index: 10000;
+}
+.fav-message-upgrade{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #22c55e;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-size: 14px;
+    display: none;
+    z-index: 10000;
+}
+
+.empty-container{
+    width: 100%;
+    min-height: 70vh;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-message{
+    font-size: 2rem;
+    font-weight: bold;
+
+    padding: 20px 30px;
+
+    border-radius: 12px;
+
+    background-color: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+
+    color: rgb(0, 0, 0);
+
+    text-align: center;
 }
 
 /* MEDIA QUERIES */

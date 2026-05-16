@@ -1,20 +1,11 @@
 const listaFavoritos = document.getElementById('listaFavoritos');
 
-const ciudadesFavoritas = JSON.parse(localStorage.getItem('listaFavoritos'));
+let ciudadesFavoritas = JSON.parse(localStorage.getItem('listaFavoritos'));
 
-//  Mostrar mensaje si existe el flag
-const removeMessage = document.getElementById("removeMessage");
-if (localStorage.getItem("ciudadEliminada") === "true") {
-    removeMessage.style.display = "block";
-    setTimeout(() => {
-        removeMessage.style.display = "none";
-    }, 2000);
-    localStorage.removeItem("ciudadEliminada"); // borramos el flag
-}
 
 console.log(ciudadesFavoritas);
 
-if(ciudadesFavoritas){
+if(ciudadesFavoritas.length > 0){
     ciudadesFavoritas.forEach((ciudad, index) => { //Le decimos al forEach que devuelva tambien el INDICE
         //Creamos los elementos HTML
         const item = document.createElement('li');
@@ -33,21 +24,42 @@ if(ciudadesFavoritas){
         btnEliminar.classList.add('btnEliminar');
         btnModificar.classList.add('btnModificar');
 
-        //Le asignamos el evento al boton de guardar/modificar para que se guarden los datos del TEXTAREA
-        btnModificar.addEventListener('click', () => {
-        ciudadesFavoritas[index].note = descripcion.value;
-        localStorage.setItem('listaFavoritos', JSON.stringify(ciudadesFavoritas))});
 
         //Le asignamos el evento al boton de eliminar para borrar la ciudad favorita guardada
         btnEliminar.addEventListener('click', () => {
-            //El .filter((_, i) => i !== index) Filtra el elemento segun con quien esta asociado el boton.  (Closure)
-            const nuevasCiudades = ciudadesFavoritas.filter((_, i) => i !== index);
-            localStorage.setItem('listaFavoritos', JSON.stringify(nuevasCiudades));
+            const message = document.getElementById('message');
+            const p = document.getElementById('messageText');
+            //Eliminamos las clases
+            message.classList.remove('fav-message-upgrade', 'fav-message-remove');
+            //Le asignamos la clase correspondiente
+            message.classList.add('fav-message-remove')
 
-        // Guardamos el flag antes de recargar
-            localStorage.setItem("ciudadEliminada", "true");
+            ciudadesFavoritas = ciudadesFavoritas.filter((_, i) => i !== index);
+            localStorage.setItem('listaFavoritos',JSON.stringify(ciudadesFavoritas));
+            // Eliminar el elemento visualmente
+            item.remove();
+            p.textContent = 'Ciudad eliminada correctamente ❌';
+            // Mostrar mensaje
+            message.style.display = "block";
+            setTimeout(() => {
+                message.style.display = "none";
+            }, 1500);
+        });
+//Le asignamos el evento al boton de guardar/modificar para que se guarden los datos del TEXTAREA
+        btnModificar.addEventListener('click', () => {
+            const message = document.getElementById('message');
+            const p = document.getElementById('messageText');
+            message.classList.add('fav-message-upgrade');
+            ciudadesFavoritas[index].note = descripcion.value;
 
-            location.reload();
+            localStorage.setItem('listaFavoritos',JSON.stringify(ciudadesFavoritas));
+            p.textContent = 'Ciudad añadida a favoritos ✅';
+            // Mostrar mensaje
+            message.style.display = "block";
+
+            setTimeout(() => {
+                message.style.display = "none";
+            }, 1500);
         });
 
 
@@ -58,16 +70,16 @@ if(ciudadesFavoritas){
         item.appendChild(btnEliminar); //Agregamos el boton de eliminar al li
     });
 
-
-
-
-
-
 } else{
-    const message = document.createElement('p');
-    message.textContent = 'No se han guardado ciudades Favoritas!'
-    const container = document.createElement('div');
-    container.appendChild(message);
-    const section = document.getElementById('sectionFav');
-    section.appendChild(container);
+const message = document.createElement('p');
+message.textContent = 'No se han guardado ciudades Favoritas!';
+message.classList.add('empty-message');
+
+const container = document.createElement('div');
+container.classList.add('empty-container');
+
+container.appendChild(message);
+
+const section = document.getElementById('sectionFav');
+section.appendChild(container);
 }
